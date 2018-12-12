@@ -43,7 +43,6 @@ def description_string(description)
   end
 end
 
-
 def print_book(book_hash)
   puts '------------------------------------------'
   puts "Title: #{book_hash["title"]}"
