@@ -7,11 +7,23 @@
 <form action="/dogs" method="POST">
   <div>
     <label for="name"> Name: </label>
-    <input type="text" name="dog[name]" id="name">
+    <input type="text" name="dog[name]" id="name" >
   </div>
   <div>
     <label for="age"> Age: </label>
-    <input type="text" name="dog[age]" id="age">
+    <input type="text" name="dog[age]" id="age" >
   </div>
+  <p>Choose toys:</p>
+  <% @toys.each do |toy| %>
+    <input
+     type="checkbox"
+     id="toy-<%= toy.id %>"
+     name="dog[toy_ids][]"
+     value="<%= toy.id %>"
+    >
+    <label for="toy-<%= toy.id %>">
+      <%= toy.name %>
+    </label>
+  <% end %>
   <input type="submit" value="Create a new Dog">
 </form>

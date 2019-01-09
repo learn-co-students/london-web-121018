@@ -2,4 +2,23 @@
 
 <p> is <%= @dog.age %> years old</p>
 
-<a href="/dogs"> go back </a>
+
+<% if @dog.toys.length > 0 %>
+  <h3>this dog has following toys:</h3>
+
+  <% @dog.toys.each do |toy| %>
+    <p> <%= toy.name %> </p>
+  <% end %>
+<% else %>
+  <p>this dog has no toys</p>
+<% end %>
+
+<hr>
+
+<p>
+  <a href="/dogs/<%= @dog.id %>/edit"> edit me </a>
+</p>
+
+<p>
+  <a href="/dogs"> go back </a>
+</p>
