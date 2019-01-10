@@ -28,6 +28,7 @@ class DogsController < ApplicationController
   get "/dogs/:id/edit" do
     @dog = Dog.find(params[:id])
     @toys = Toy.all
+    @trees = Tree.all
     erb :"dogs/edit"
   end
 
@@ -38,6 +39,10 @@ class DogsController < ApplicationController
     # if the toy_ids array does not exist, make it so it is a empty one
     if !params[:dog][:toy_ids]
       params[:dog][:toy_ids] = []
+    end
+
+    if !params[:dog][:tree_ids]
+      params[:dog][:tree_ids] = []
     end
 
     dog.update(params[:dog])

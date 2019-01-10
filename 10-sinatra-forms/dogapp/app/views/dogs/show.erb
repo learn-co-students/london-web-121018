@@ -2,7 +2,6 @@
 
 <p> is <%= @dog.age %> years old</p>
 
-
 <% if @dog.toys.length > 0 %>
   <h3>this dog has following toys:</h3>
 
@@ -11,6 +10,18 @@
   <% end %>
 <% else %>
   <p>this dog has no toys</p>
+<% end %>
+
+<hr>
+
+<% if @dog.trees.length > 0 %>
+  <h3>this dog has marked following trees:</h3>
+
+  <% @dog.trees.each do |tree| %>
+    <p> <%= tree.name %> </p>
+  <% end %>
+<% else %>
+  <p>this dog has not marked any trees</p>
 <% end %>
 
 <hr>

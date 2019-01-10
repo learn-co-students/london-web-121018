@@ -6,15 +6,19 @@
 
 <form action="/dogs/<%= @dog.id %>" method="POST">
   <input type="hidden" name="_method" value="patch" />
+
   <div>
     <label for="">name:</label>
     <input type="text" name="dog[name]" value="<%= @dog.name %>" />
   </div>
+
   <div>
     <label for="">age:</label>
     <input type="text" name="dog[age]" value="<%= @dog.age %>" />
   </div>
+
   <hr>
+
   <p>Choose toys:</p>
   <% @toys.each do |toy| %>
     <input
@@ -22,14 +26,30 @@
      id="toy-<%= toy.id %>"
      name="dog[toy_ids][]"
      value="<%= toy.id %>"
-
      <% if @dog.toys.include?(toy) %>
        checked
      <% end %>
-
     >
     <label for="toy-<%= toy.id %>">
       <%= toy.name %>
+    </label>
+  <% end %>
+
+  <hr>
+
+  <p>Choose trees to mark:</p>
+  <% @trees.each do |tree| %>
+    <input
+     type="checkbox"
+     id="tree-<%= tree.id %>"
+     name="dog[tree_ids][]"
+     value="<%= tree.id %>"
+     <% if @dog.trees.include?(tree) %>
+       checked
+     <% end %>
+    >
+    <label for="tree-<%= tree.id %>">
+      <%= tree.name %>
     </label>
   <% end %>
 
