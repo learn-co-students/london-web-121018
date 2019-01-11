@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # generate all 7 restful resources
+  # resources :trains
+
+  # generate only needed resources
+  # resources :trains, only: [:index, :show]
+
+  # declare direclty
+  get "/trains", to: 'trains#index', as: 'trains'
+  get '/trains/:id', to: 'trains#show', as: 'train'
+
 end
