@@ -1,0 +1,15 @@
+<%= form_for @doctor do |f| %>
+  <span>👩‍⚕️👨‍⚕️🏥</span>
+  <hr>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <hr>
+
+  <%= f.label :specialty %>
+  <%= f.text_field :specialty %>
+
+  <%= f.submit %>
+
+  <hr>
+<% end %>
