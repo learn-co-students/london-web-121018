@@ -1,6 +1,7 @@
 class DoctorsController < ApplicationController
   # github hack story https://gist.github.com/peternixey/1978249
-  before_action :find_doctor, only: [:show, :edit, :update, :delete]
+  before_action :find_doctor, only: [:show, :edit, :update, :destroy]
+  before_action :find_pills, only: [:new, :edit]
 
   def index
     @doctors = Doctor.all
@@ -27,20 +28,27 @@ class DoctorsController < ApplicationController
   end
 
   def update
+    @doctor.update(doctor_params)
+    byebug
+    redirect_to @doctor
   end
 
-  def delete
-    doctor.destroy
-    # some kind of redirect
+  def destroy
+    @doctor.destroy
+    redirect_to doctors_path
   end
 
   private
 
   def doctor_params
-    params.require(:doctor).permit(:name, :specialty)
+    params.require(:doctor).permit(:name, :specialty, pill_ids: [])
   end
 
   def find_doctor
     @doctor = Doctor.find(params[:id])
+  end
+
+  def find_pills
+    @pills = Pill.all
   end
 end

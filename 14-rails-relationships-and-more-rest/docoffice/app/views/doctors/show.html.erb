@@ -1,5 +1,19 @@
 <h1> <%= @doctor.name %> </h1>
 
+<%= link_to 'edit', edit_doctor_path(@doctor) %>
+
+<% if @doctor.pills %>
+  <p>Pills:</p>
+  <ul>
+    <% @doctor.pills.each do |pill| %>
+      <li>
+        <%= pill.name %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This doctor has no pills</p>
+<% end %>
 
 <p>
   This doctor is good with <%= @doctor.specialty %>.
