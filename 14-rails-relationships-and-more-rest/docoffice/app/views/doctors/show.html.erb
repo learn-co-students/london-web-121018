@@ -15,6 +15,19 @@
   <p>This doctor has no pills</p>
 <% end %>
 
+<% if @doctor.patients %>
+  <p>Patients:</p>
+  <ul>
+    <% @doctor.patients.each do |patient| %>
+      <li>
+        <%= patient.name %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This doctor has no patients</p>
+<% end %>
+
 <p>
   This doctor is good with <%= @doctor.specialty %>.
 </p>

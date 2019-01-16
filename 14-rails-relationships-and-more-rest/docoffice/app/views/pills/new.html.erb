@@ -1,0 +1,8 @@
+<%= form_for @pill do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.collection_select :doctor_id, Doctor.all, :id, :name %>
+
+  <%= f.submit %>
+<% end %>
