@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <pre>
+      doctors seen:<%= session[:doctors_seen].length %>
+    </pre>
+    <%= link_to 'clean doctors seen', '/clean'%>
     <%= yield %>
   </body>
 </html>
