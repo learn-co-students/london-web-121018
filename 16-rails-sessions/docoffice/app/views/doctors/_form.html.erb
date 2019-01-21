@@ -1,0 +1,41 @@
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error_text| %>
+      <li>
+        <%= error_text %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>
+    There is no errors!
+  </p>
+<% end %>
+
+
+<%= form_for @doctor do |f| %>
+  <span>👩‍⚕️👨‍⚕️🏥</span>
+  <hr>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <hr>
+
+  <%= f.label :specialty %>
+  <%= f.text_field :specialty %>
+
+  <p>select pills:</p>
+  <%= f.collection_check_boxes :pill_ids, @pills, :id, :name %>
+
+  <br>
+
+  <p>select patients:</p>
+  <%= f.collection_check_boxes :patient_ids, Patient.all, :id, :name %>
+
+  <br>
+
+  <%= f.submit %>
+
+  <hr>
+<% end %>
