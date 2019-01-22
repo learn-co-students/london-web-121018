@@ -9,11 +9,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
-    <pre>
-      doctors seen:<%= session[:doctors_seen].length %>
-    </pre>
-    <%= link_to 'clean doctors seen', '/clean'%>
+
+  <% if flash[:errors] %>
+    <ul>
+      <% flash[:errors].each do |e| %>
+        <li style="color: red;">
+          <%= e %>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <%=  link_to "log out", logout_path, method: "post" %>
+
+    <%= session[:user_id] ? session[:user_id] : 'no user' %>
     <%= yield %>
   </body>
 </html>

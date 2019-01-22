@@ -4,21 +4,10 @@ class DoctorsController < ApplicationController
   before_action :find_pills, only: [:new, :edit]
 
   def index
-    session[:doctors_seen] ||= []
-
     @doctors = Doctor.all
-      .reject { |doctor| session[:doctors_seen].include?(doctor.id) }
-
   end
 
   def show
-    session[:doctors_seen] ||= []
-    session[:doctors_seen] << @doctor.id
-  end
-
-  def clean
-    session[:doctors_seen] = []
-    redirect_to doctors_path
   end
 
   def create
