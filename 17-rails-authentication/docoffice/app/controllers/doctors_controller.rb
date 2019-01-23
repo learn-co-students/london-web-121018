@@ -2,6 +2,7 @@ class DoctorsController < ApplicationController
   # github hack story https://gist.github.com/peternixey/1978249
   before_action :find_doctor, only: [:show, :edit, :update, :destroy]
   before_action :find_pills, only: [:new, :edit]
+  before_action :authorized?, only: [:index, :show, :edit, :new]
 
   def index
     @doctors = Doctor.all

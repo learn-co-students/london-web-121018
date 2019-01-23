@@ -1,4 +1,6 @@
 class PillsController < ApplicationController
+  before_action :authorized?, only: [:show, :new]
+
   def show
     @pill = Pill.find(params[:id])
   end

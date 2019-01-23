@@ -8,24 +8,35 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<body>
+    <h1>
+      <%= link_to 'DOC APP👩‍⚕️🏥👨‍⚕️', doctors_path %>
+    </h1>
 
-
-
-  <body>
-
-  <% if flash[:errors] %>
-    <ul>
-      <% flash[:errors].each do |e| %>
-        <li style="color: red;">
-          <%= e %>
-        </li>
-      <% end %>
-    </ul>
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |e| %>
+          <li style="color: red;">
+            <%= e %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
 
-    <%=  link_to "log out", logout_path, method: "post" %>
+    <% if flash[:authorized] %>
+      <p style="color: red;">
+        <%= flash[:authorized] %>
+      </p>
+    <% end %>
 
-    <%= session[:user_id] ? session[:user_id] : 'no user' %>
+    <% if !logged_in? %>
+      <%= link_to 'log in', login_path %>
+      <%= link_to 'sign up', signup_path %>
+    <% else %>
+      <%= link_to "log out", logout_path, method: "post" %>
+      <%= 'hello, ' + current_user.name + '!' %>
+      <%= link_to 'my medical record', user_path(current_user) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
