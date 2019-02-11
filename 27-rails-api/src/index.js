@@ -1,3 +1,4 @@
+// variables
 const baseUrl = 'http://localhost:3000'
 let imageId = 1
 const imageURL = baseUrl + `/images/${imageId}`
