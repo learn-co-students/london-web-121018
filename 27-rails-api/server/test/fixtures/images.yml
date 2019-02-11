@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  like_count: 1
+  name: MyString
+
+two:
+  url: MyString
+  like_count: 1
+  name: MyString
