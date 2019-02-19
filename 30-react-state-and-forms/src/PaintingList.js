@@ -2,7 +2,7 @@ import React from 'react';
 import Painting from './Painting';
 
 const PaintingList = ( props ) => {
-  const allPaintings = props.paintings.map(painting => <Painting painting={painting} />);
+  const allPaintings = props.paintings.map(painting => <Painting painting={painting} key={painting.id} />);
 
   return (
     <div>
